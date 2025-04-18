@@ -562,3 +562,24 @@
     opacity: 1;
   }
   
+
+  .mensaje-admin {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #b88f63;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    font-weight: bold;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .mensaje-admin.mostrar {
+    display: block;
+    opacity: 1;
+  }
+  
