@@ -86,10 +86,12 @@ function cambiarTipoPostre() {
   
     // Guardar en Sheets
     fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(datos),
-      headers: { "Content-Type": "application/json" }
-    })
+        method: "POST",
+        mode: "no-cors", // 👈 Esto evita el error CORS
+        body: JSON.stringify(datos),
+        headers: { "Content-Type": "application/json" }
+      })
+      
       .then(() => console.log("✅ Pedido guardado en Google Sheets"))
       .catch(err => console.error("❌ Error al guardar en Sheets", err));
   
