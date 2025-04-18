@@ -165,7 +165,7 @@ function cambiarTipoPostre() {
   }
   
   // 📥 Cargar pedidos en la tabla + gráfico
-  function cargarPedidos() {
+function cargarPedidos() {
     fetch("https://script.google.com/macros/s/AKfycbzd-_V0Ipje39I3Hf_zDiFfo67ynkg-XZhUBWe95dQZJRaRSAKsSx1gLO9UX3LfeBGwXA/exec")
       .then(res => res.json())
       .then(data => {
@@ -179,7 +179,7 @@ function cambiarTipoPostre() {
               <td>${p.Nombre}</td>
               <td>${p.Postre}</td>
               <td>${p.Fecha}</td>
-              <td>${p.Hora}</td>
+              <td>${p["Hora límite"]}</td>
               <td><span class="estado">Pendiente</span></td>
               <td>
                 <button class="btnEntregado" onclick="marcarEntregado(this)">✅ Entregado</button>
@@ -208,8 +208,10 @@ function cambiarTipoPostre() {
             }
           }
         });
-      });
+      })
+      .catch(err => console.error("❌ Error al cargar pedidos", err));
   }
+  
   
   // ✅ Marcar pedido como entregado
   function marcarEntregado(btn) {
