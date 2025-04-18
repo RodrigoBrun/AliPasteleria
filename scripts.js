@@ -180,6 +180,8 @@ function cargarPedidos() {
               <td>${p.Postre}</td>
               <td>${p.Fecha}</td>
               <td>${p["Hora límite"]}</td>
+              <td>${p.Detalles}</td>
+              <td>${p["Fecha de envío"]}</td>
               <td><span class="estado">Pendiente</span></td>
               <td>
                 <button class="btnEntregado" onclick="marcarEntregado(this)">✅ Entregado</button>
@@ -211,6 +213,7 @@ function cargarPedidos() {
       })
       .catch(err => console.error("❌ Error al cargar pedidos", err));
   }
+  
   
   
   // ✅ Marcar pedido como entregado
