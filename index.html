@@ -133,15 +133,17 @@
     <div class="tabla-admin">
       <table id="tablaPedidos">
         <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Postre</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Postre</th>
+              <th>Fecha</th>
+              <th>Hora límite</th>
+              <th>Detalles</th>
+              <th>Fecha de envío</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>          
         <tbody>
           <!-- Se llena desde JS -->
         </tbody>
@@ -166,8 +168,18 @@
     <button onclick="mostrarLoginAdmin()" class="btn-admin-oculto">Modo admin</button>
   </footer>
 
-  <!-- Botón WhatsApp flotante -->
-  <a href="https://wa.me/59898923768" class="whatsapp-float" target="_blank">💬</a>
+  
+  <!-- Botón WhatsApp flotante con logo -->
+  <a href="https://wa.me/59898923768" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+      <path fill="#25D366" d="M380.9 97.1C339-44.4 175.2-20.5 120.9 97.1c-54.3 117.6 6.6 259.3 124.2 313.6 117.6 54.3 259.3-6.6 313.6-124.2 54.3-117.6-6.6-259.3-124.2-313.6zM224 438.5c-118.5 0-214.5-96-214.5-214.5S105.5 9.5 224 9.5 438.5 105.5 438.5 224 342.5 438.5 224 438.5z"/>
+      <path fill="#fff" d="M308.3 304.3l-19.6-5.6c-5.3-1.5-11.1-.1-15.1 3.7l-14.4 13.8c-35.5-18.7-64.3-47.5-83-83l13.8-14.4c3.8-4 5.2-9.8 3.7-15.1l-5.6-19.6c-2.6-9.1-11.1-15.3-20.5-15.3h-16.8c-11.5 0-20.8 9.3-20.8 20.8 0 106.1 86.1 192.2 192.2 192.2 11.5 0 20.8-9.3 20.8-20.8v-16.8c0-9.4-6.2-17.9-15.3-20.5z"/>
+    </svg>
+  </a>
+  
+  
+  
+  
   <script src="scripts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <div id="mensajeCierreAdmin" class="mensaje-admin" style="display: none;">
