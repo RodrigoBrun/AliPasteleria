@@ -1,14 +1,14 @@
-// Cambia entre menú y personalizado
+// 👇 Muestra el campo correcto según si el usuario elige postre del menú o personalizado
 function cambiarTipoPostre() {
     const tipo = document.getElementById("tipoPostre").value;
     const menu = document.getElementById("postreMenu");
     const personalizado = document.getElementById("postrePersonalizado");
   
-    // Ocultar ambos campos al cambiar
+    // Oculta ambos campos primero
     menu.style.display = "none";
     personalizado.style.display = "none";
   
-    // Mostrar solo el campo correspondiente
+    // Muestra solo el campo seleccionado
     if (tipo === "menu") {
       menu.style.display = "block";
       menu.required = true;
@@ -19,13 +19,13 @@ function cambiarTipoPostre() {
       menu.required = false;
     }
   
-    // Limpiar vista previa si cambia tipo
+    // Limpia la vista previa si cambia la selección
     document.getElementById("previewProducto").innerHTML = "";
   }
   
-  // Enviar pedido por WhatsApp y guardar en Google Sheets
+  // 🧁 Enviar pedido por WhatsApp y guardar datos en Google Sheets
   function enviarPorWhatsapp() {
-    // Obtener campos del formulario
+    // Obtener los campos del formulario
     const nombre = document.getElementById("nombre");
     const correo = document.getElementById("correo");
     const tipoPostre = document.getElementById("tipoPostre").value;
@@ -36,16 +36,16 @@ function cambiarTipoPostre() {
     const hora = document.getElementById("hora");
     const estado = document.getElementById("estadoPedido");
   
-    // Limpiar errores previos
+    // Eliminar errores previos
     [nombre, correo, postreMenu, postrePersonalizado, fecha, hora].forEach(el => el.classList.remove("error"));
     estado.textContent = "";
   
-    // Validar campos obligatorios
     let valido = true;
+  
+    // Validar campos obligatorios
     if (!nombre.value.trim()) { nombre.classList.add("error"); valido = false; }
     if (!correo.value.trim()) { correo.classList.add("error"); valido = false; }
   
-    // Obtener tipo de postre elegido
     let postre = "";
     if (tipoPostre === "menu") {
       postre = postreMenu.value.trim();
@@ -62,54 +62,66 @@ function cambiarTipoPostre() {
     if (!fecha.value) { fecha.classList.add("error"); valido = false; }
     if (!hora.value) { hora.classList.add("error"); valido = false; }
   
-    // Si hay errores, no continuar
     if (!valido) {
       estado.textContent = "Por favor completá todos los campos obligatorios.";
       estado.style.color = "#e74c3c";
       return;
     }
   
-    // Preparar mensaje para WhatsApp
-    const mensaje = `Hola AliPasteleri! %0AQuiero hacer un pedido:%0A%0A👤 Nombre: ${nombre.value}%0A✉️ Correo: ${correo.value}%0A🍰 Postre: ${postre}%0A📅 Fecha de entrega: ${fecha.value}%0A⏰ Hora límite de entrega: ${hora.value}%0A📝 Detalles: ${detalle.value || 'Sin detalles extra'}`;
+    // Armar mensaje para WhatsApp
+    const mensaje = `Hola AliPasteleri! 😄%0AQuiero hacer un pedido:%0A%0A👤 Nombre: ${nombre.value}%0A✉️ Correo: ${correo.value}%0A🍰 Postre: ${postre}%0A📅 Fecha de entrega: ${fecha.value}%0A⏰ Hora límite de entrega: ${hora.value}%0A📝 Detalles: ${detalle.value || 'Sin detalles extra'}`;
   
-    // URL del script de Google Apps
+    // URL del Google Apps Script
     const scriptURL = "https://script.google.com/macros/s/AKfycbzd-_V0Ipje39I3Hf_zDiFfo67ynkg-XZhUBWe95dQZJRaRSAKsSx1gLO9UX3LfeBGwXA/exec";
-    const datos = { nombre: nombre.value, correo: correo.value, postre, fecha: fecha.value, hora: hora.value, detalle: detalle.value || "Sin detalles extra" };
   
-    // Enviar datos a Google Sheets
-    fetch(scriptURL, { method: "POST", body: JSON.stringify(datos), headers: { "Content-Type": "application/json" } })
+    // Datos a enviar a Google Sheets
+    const datos = {
+      nombre: nombre.value,
+      correo: correo.value,
+      postre,
+      fecha: fecha.value,
+      hora: hora.value,
+      detalle: detalle.value || "Sin detalles extra"
+    };
+  
+    // Guardar en Sheets
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(datos),
+      headers: { "Content-Type": "application/json" }
+    })
       .then(() => console.log("✅ Pedido guardado en Google Sheets"))
       .catch(err => console.error("❌ Error al guardar en Sheets", err));
   
-    // Mostrar mensaje visual
+    // Aviso visual
     estado.textContent = "Redirigiéndote a WhatsApp... 🍰";
     estado.style.color = "#2ecc71";
   
-    // Abrir WhatsApp
+    // Redirigir a WhatsApp
     const numero = "59898923768";
     const url = `https://wa.me/${numero}?text=${mensaje}`;
     window.open(url, "_blank");
   
-    // Mostrar popup de confirmación
+    // Mostrar popup de éxito
     document.getElementById("popupConfirmacion").style.display = "flex";
   }
   
-  // Cerrar popup
+  // 🔒 Cierra el popup de confirmación
   function cerrarPopup() {
     document.getElementById("popupConfirmacion").style.display = "none";
   }
   
-  // Mostrar imagen según el postre elegido del menú
+  // 👀 Mostrar imagen del postre seleccionado
   function vistaPreviaPostre() {
     const postreMenu = document.getElementById("postreMenu");
     const preview = document.getElementById("previewProducto");
     const inputFecha = document.getElementById("fecha");
   
-    // Establecer fecha mínima como hoy
+    // Evitar seleccionar fecha pasada
     const hoy = new Date().toISOString().split("T")[0];
     inputFecha.setAttribute("min", hoy);
   
-    // Mostrar imagen según opción elegida
+    // Muestra la imagen del postre seleccionado
     if (postreMenu) {
       postreMenu.addEventListener("change", () => {
         const postre = postreMenu.value;
@@ -118,24 +130,39 @@ function cambiarTipoPostre() {
         else if (postre === "Rogel") img = "Imagenes/rogel.jpg";
         else if (postre === "Mousse de Chocolate") img = "Imagenes/mousse-choco.png";
         else if (postre === "Tarta Frutal") img = "Imagenes/tarta-frutas.png";
+  
+        // Mostrar imagen o limpiar
         preview.innerHTML = img ? `<img src="${img}" alt="${postre}" style="max-width: 250px; margin-top: 1rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: opacity 0.5s;" onload="this.style.opacity='1'" />` : "";
       });
     }
   }
   
-  // Validar login del admin
+  // 👤 Validación de clave para acceder al modo administrador
   function verificarClaveAdmin() {
     const clave = document.getElementById("claveAdmin").value;
     if (clave === "pasteleria2025") {
       document.getElementById("loginAdmin").style.display = "none";
       document.getElementById("admin").style.display = "block";
+      document.getElementById("btnCerrarAdmin").style.display = "inline-block";
       cargarPedidos();
     } else {
       alert("Clave incorrecta ❌");
     }
   }
   
-  // Cargar pedidos y mostrar tabla + grafico
+  // 🔚 Cerrar el panel admin
+  function cerrarAdmin() {
+    document.getElementById("admin").style.display = "none";
+    const mensaje = document.getElementById("mensajeCierreAdmin");
+    mensaje.classList.add("mostrar");
+    setTimeout(() => {
+      mensaje.classList.remove("mostrar");
+      mensaje.style.display = "none";
+    }, 2500);
+    mensaje.style.display = "block";
+  }
+  
+  // 📥 Cargar pedidos en la tabla + gráfico
   function cargarPedidos() {
     fetch("https://script.google.com/macros/s/AKfycbzd-_V0Ipje39I3Hf_zDiFfo67ynkg-XZhUBWe95dQZJRaRSAKsSx1gLO9UX3LfeBGwXA/exec")
       .then(res => res.json())
@@ -152,11 +179,15 @@ function cambiarTipoPostre() {
               <td>${p.Fecha}</td>
               <td>${p.Hora}</td>
               <td><span class="estado">Pendiente</span></td>
-              <td><button class="btnEntregado" onclick="marcarEntregado(this)">✅ Entregado</button></td>
+              <td>
+                <button class="btnEntregado" onclick="marcarEntregado(this)">✅ Entregado</button>
+                <button class="btnCancelar" onclick="cancelarPedido(this)">❌ Cancelar</button>
+              </td>
             </tr>`;
           postres[p.Postre] = (postres[p.Postre] || 0) + 1;
         });
   
+        // Mostrar gráfico de pedidos por tipo
         const ctx = document.getElementById("graficoPedidos").getContext("2d");
         new Chart(ctx, {
           type: "bar",
@@ -178,19 +209,30 @@ function cambiarTipoPostre() {
       });
   }
   
-  // Marcar pedido como entregado en tabla
+  // ✅ Marcar pedido como entregado
   function marcarEntregado(btn) {
     const fila = btn.closest("tr");
     fila.querySelector(".estado").textContent = "Entregado ✅";
     btn.disabled = true;
+    btn.nextElementSibling.disabled = true;
     btn.style.opacity = 0.5;
+    btn.nextElementSibling.style.opacity = 0.5;
   }
   
-  // Inicializar funciones al cargar el DOM
+  // ❌ Cancelar pedido
+  function cancelarPedido(btn) {
+    const fila = btn.closest("tr");
+    fila.querySelector(".estado").textContent = "Cancelado ❌";
+    btn.disabled = true;
+    btn.previousElementSibling.disabled = true;
+    btn.style.opacity = 0.5;
+    btn.previousElementSibling.style.opacity = 0.5;
+  }
+  
+  // 🔍 Buscador + exportador
   document.addEventListener("DOMContentLoaded", () => {
     vistaPreviaPostre();
   
-    // Filtro de pedidos en admin
     const buscador = document.getElementById("buscadorPedidos");
     if (buscador) {
       buscador.addEventListener("input", function () {
@@ -222,7 +264,7 @@ function cambiarTipoPostre() {
     }
   });
   
-  // Mostrar el login de admin manualmente
+  // 🔓 Mostrar el login del modo administrador
   function mostrarLoginAdmin() {
     document.getElementById("loginAdmin").style.display = "flex";
   }
