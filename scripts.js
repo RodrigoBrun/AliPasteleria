@@ -73,7 +73,7 @@ function cambiarTipoPostre() {
   
     // URL del Google Apps Script
     const scriptURL = "https://script.google.com/macros/s/AKfycbzd-_V0Ipje39I3Hf_zDiFfo67ynkg-XZhUBWe95dQZJRaRSAKsSx1gLO9UX3LfeBGwXA/exec";
-  
+
     // Datos a enviar a Google Sheets
     const datos = {
       nombre: nombre.value,
