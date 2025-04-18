@@ -114,6 +114,11 @@
 <!-- Sección de Administración Avanzada -->
 <section id="admin" class="admin" style="display: none;">
     <h2>📊 Panel de Administración</h2>
+    <!-- Botón para cerrar el modo admin -->
+<button id="btnCerrarAdmin" onclick="cerrarAdmin()" style="display: none; margin-bottom: 1rem; background-color: #e74c3c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer;">
+    🔒 Cerrar modo admin
+  </button>
+  
   
     <!-- Botones superiores -->
     <div class="admin-controles">
@@ -165,6 +170,9 @@
   <a href="https://wa.me/59898923768" class="whatsapp-float" target="_blank">💬</a>
   <script src="scripts.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+  <div id="mensajeCierreAdmin" class="mensaje-admin" style="display: none;">
+    🔒 Modo admin cerrado
+  </div>
+  
 </body>
 </html>
