@@ -278,3 +278,12 @@ function cargarPedidos() {
     document.getElementById("loginAdmin").style.display = "flex";
   }
   
+
+  function doOptions(e) {
+    return ContentService.createTextOutput('')
+      .setMimeType(ContentService.MimeType.TEXT)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  }
+  
