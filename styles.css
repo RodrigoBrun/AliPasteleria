@@ -1,4 +1,6 @@
-/* Reset básico */
+/* =====================
+   Reset básico
+===================== */
 * {
     margin: 0;
     padding: 0;
@@ -13,7 +15,9 @@
     scroll-behavior: smooth;
   }
   
-  /* Navbar */
+  /* =====================
+     Navbar superior
+  ===================== */
   .navbar {
     position: sticky;
     top: 0;
@@ -68,7 +72,9 @@
     color: #b88f63;
   }
   
-  /* Hero */
+  /* =====================
+     Hero (sección principal)
+  ===================== */
   .hero {
     background: linear-gradient(to bottom, #fdf7f2, #fff);
     height: 80vh;
@@ -112,7 +118,9 @@
     transform: scale(1.05);
   }
   
-  /* Productos */
+  /* =====================
+     Sección de productos
+  ===================== */
   .productos {
     padding: 4rem 2rem;
     background-color: #fafafa;
@@ -159,40 +167,9 @@
     color: #b88f63;
   }
   
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    background-color: #fff;
-    font-size: 0.9rem;
-    color: #777;
-    border-top: 1px solid #eee;
-    animation: fadeIn 2s ease;
-  }
-  
-  /* WhatsApp botón flotante */
-  .whatsapp-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25D366;
-    color: white;
-    font-size: 1.5rem;
-    padding: 0.7rem 1rem;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: background 0.3s;
-  }
-  
-  .whatsapp-float:hover {
-    background-color: #1ebc5b;
-  }
-  
-
-
-
+  /* =====================
+     Sección pedido
+  ===================== */
   .pedido {
     background-color: #fef8f5;
     padding: 4rem 2rem;
@@ -220,8 +197,10 @@
     gap: 1rem;
   }
   
+  /* Estilo para input, textarea y selects */
   .formulario-pedido input,
-  .formulario-pedido textarea {
+  .formulario-pedido textarea,
+  .formulario-pedido select {
     padding: 1rem;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -229,16 +208,29 @@
     font-family: 'Open Sans', sans-serif;
     width: 100%;
     resize: vertical;
+    background-color: #fff;
   }
   
+  /* Botón del formulario */
   .formulario-pedido button {
     align-self: center;
   }
   
-
-
-
-
+  /* Feedback visual */
+  .error {
+    border: 2px solid #e74c3c !important;
+    background-color: #fff0f0;
+  }
+  
+  .mensaje-enviado {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  /* =====================
+     Contacto y mapa
+  ===================== */
   .contacto {
     padding: 4rem 2rem;
     background-color: #fff;
@@ -267,16 +259,162 @@
     border: none;
   }
   
+  /* =====================
+     Footer
+  ===================== */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+    font-size: 0.9rem;
+    color: #777;
+    border-top: 1px solid #eee;
+    animation: fadeIn 2s ease;
+  }
+  
+  /* =====================
+     Botón flotante WhatsApp
+  ===================== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: background 0.3s;
+  }
+  
+  .whatsapp-float:hover {
+    background-color: #1ebc5b;
+  }
+  
 
+  .etiqueta {
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  
+/* =====================
+   Vista previa del producto seleccionado
+===================== */
+.preview img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
 
+/* ==============================
+   Popup de confirmación de pedido
+============================== */
 
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45); /* Fondo oscuro transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    font-family: 'Open Sans', sans-serif;
+    animation: scaleIn 0.3s ease-out;
+  }
+  
+  .popup-content p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2ecc71;
+    margin-bottom: 1.5rem;
+  }
+  
+  .popup-content button {
+    background-color: #b88f63;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .popup-content button:hover {
+    background-color: #a07547;
+  }
+  
+  /* Animaciones del popup */
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+/* ==============================
+   Panel de Administración
+============================== */
+.admin {
+    padding: 4rem 2rem;
+    background-color: #fffefb;
+  }
+  
+  .admin h2 {
+    font-family: 'Playfair Display', serif;
+    color: #b88f63;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .tabla-admin {
+    margin-top: 2rem;
+    overflow-x: auto;
+  }
+  
+  .tabla-admin table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  .tabla-admin th,
+  .tabla-admin td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .tabla-admin th {
+    background-color: #f2e6da;
+    color: #4d3b28;
+  }
+  
 
-
-
-
-
-
-  /* Animaciones */
+  /* =====================
+     Animaciones
+  ===================== */
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -303,3 +441,124 @@
       transform: translateY(0);
     }
   }
+  
+  /* =========================================
+   Panel de Administración - Estilos
+========================================= */
+
+/* Estilo general del panel admin */
+.admin {
+    background-color: #fffaf7; /* Fondo claro con un tono pastel */
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  
+  /* Título del panel admin */
+  .admin h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #b88f63;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Contenedor de buscador y botón exportar */
+  .admin-controles {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  /* Campo de búsqueda */
+  .admin-controles input {
+    padding: 0.7rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  
+  /* Botón para exportar CSV */
+  .admin-controles button {
+    padding: 0.7rem 1.2rem;
+    background-color: #b88f63;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .admin-controles button:hover {
+    background-color: #9d744d;
+  }
+  
+  /* Contenedor de la tabla para permitir scroll horizontal en móviles */
+  .tabla-admin {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  
+  /* Estilos de la tabla */
+  #tablaPedidos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  /* Estilos de celdas y encabezados */
+  #tablaPedidos th,
+  #tablaPedidos td {
+    padding: 1rem;
+    border: 1px solid #eee;
+    text-align: center;
+  }
+  
+  /* Encabezado de tabla */
+  #tablaPedidos th {
+    background-color: #f7ede5;
+    color: #6d4c41;
+  }
+  
+  /* Texto del estado */
+  .estado {
+    font-weight: bold;
+    color: #f39c12; /* Naranja suave */
+  }
+  
+  /* Botón para marcar como entregado */
+  .btnEntregado {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #2ecc71;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s ease;
+  }
+  
+  .btnEntregado:hover {
+    background-color: #27ae60;
+  }
+  
+
+
+  .btn-admin-oculto {
+    position: left;
+    bottom: 15px;
+    right: 15px;
+    background-color: transparent;
+    color: #b88f63;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  
+  .btn-admin-oculto:hover {
+    opacity: 1;
+  }
+  
