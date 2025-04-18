@@ -11,7 +11,7 @@ function enviarPorWhatsapp() {
   
     const mensaje = `Hola AliPasteleri! 👋%0AQuiero hacer un pedido:%0A%0A👤 Nombre: ${nombre}%0A Correo: ${correo}%0A Postre: ${postre}%0A Detalles: ${detalle || 'Sin detalles extra'}`;
   
-    const numero = "59898923758";
+    const numero = "59898923768";
     const url = `https://wa.me/${numero}?text=${mensaje}`;
     window.open(url, "_blank");
   }
