@@ -174,13 +174,14 @@ function cargarPedidos() {
         tabla.innerHTML = "";
   
         data.forEach(p => {
-          tabla.innerHTML += `
+            tabla.innerHTML += `
             <tr>
               <td>${p.Nombre}</td>
+              <td>${p.Correo}</td>
               <td>${p.Postre}</td>
               <td>${p.Fecha}</td>
-              <td>${p["Hora límite"]}</td>
-              <td>${p.Detalles}</td>
+              <td>${p["Hora límite"] || p.Hora}</td>
+              <td>${p.Detalles || p.Detalle}</td>
               <td>${p["Fecha de envío"]}</td>
               <td><span class="estado">Pendiente</span></td>
               <td>
@@ -188,6 +189,7 @@ function cargarPedidos() {
                 <button class="btnCancelar" onclick="cancelarPedido(this)">❌ Cancelar</button>
               </td>
             </tr>`;
+          
           postres[p.Postre] = (postres[p.Postre] || 0) + 1;
         });
   
