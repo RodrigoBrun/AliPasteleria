@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AliPasteleri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">AliPasteleri</div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#pedido">Pedir</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero principal -->
+  <header id="inicio" class="hero">
+    <div class="hero-content">
+      <h1>Este Día de la Madre</h1>
+      <p>Sorprendela con lo más dulce de AliPasteleri</p>
+      <a href="#productos" class="btn">Ver productos</a>
+    </div>
+  </header>
+
+  <!-- Sección de productos -->
+  <section id="productos" class="productos">
+    <h2>Nuestras tortas</h2>
+    <div class="galeria">
+      <div class="producto">
+        <img src="Imagenes/PostreChaja.png" alt="Torta Chajá">
+        <h3>Torta Chajá</h3>
+      </div>
+      <div class="producto">
+        <img src="imagenes/rogel.jpg" alt="Rogel">
+        <h3>Rogel</h3>
+      </div>
+      <div class="producto">
+        <img src="Imagenes/mousse-choco.png" alt="Torta de mousse de chocolate">
+        <h3>Mousse de Chocolate</h3>
+      </div>
+      <div class="producto">
+        <img src="Imagenes/tarta-frutas.png" alt="Tarta frutal">
+        <h3>Tarta Frutal</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección pedir tu postre -->
+  <section id="pedido" class="pedido">
+    <h2>¡Pedí tu postre!</h2>
+    <p>Completá el formulario y hacé tu pedido. Nos contactamos contigo a la brevedad.</p>
+    <form class="formulario-pedido">
+      <input type="text" placeholder="Tu nombre" required>
+      <input type="email" placeholder="Correo electrónico" required>
+      <input type="text" placeholder="¿Qué postre te gustaría?" required>
+      <textarea placeholder="Detalles adicionales o dedicatoria..." rows="4"></textarea>
+      <button type="button" onclick="enviarPorWhatsapp()" class="btn">Enviar pedido</button>
+
+    </form>
+  </section>
+
+  <!-- Sección contacto + mapa -->
+  <section id="contacto" class="contacto">
+    <h2>Vení a visitarnos</h2>
+    <p>Estamos en Minas, Lavalleja. También hacemos envíos 💌</p>
+    <div class="mapa">
+      <iframe src="https://www.google.com/maps?q=minas+lavalleja&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 AliPasteleri - Hecho con amor en Uruguay</p>
+    <p>WhatsApp: 098 923 758</p>
+  </footer>
+
+  <!-- Botón WhatsApp flotante -->
+  <a href="https://wa.me/59898923758" class="whatsapp-float" target="_blank">💬</a>
+  <script src="scripts.js"></script>
+
+</body>
+</html>
