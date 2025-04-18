@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AliPasteleria</title>
+  <title>AliPasteleri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
   <header id="inicio" class="hero">
     <div class="hero-content">
       <h1>Este Día de la Madre</h1>
-      <p>Sorprendela con lo más dulce de AliPasteleri</p>
+      <p>Sorprendela con lo más dulce de AliPasteleria</p>
       <a href="#productos" class="btn">Ver productos</a>
     </div>
   </header>
@@ -58,14 +58,49 @@
     <h2>¡Pedí tu postre!</h2>
     <p>Completá el formulario y hacé tu pedido. Nos contactamos contigo a la brevedad.</p>
     <form class="formulario-pedido">
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Correo electrónico" required>
-      <input type="text" placeholder="¿Qué postre te gustaría?" required>
-      <textarea placeholder="Detalles adicionales o dedicatoria..." rows="4"></textarea>
-      <button type="button" onclick="enviarPorWhatsapp()" class="btn">Enviar pedido</button>
+      <input type="text" id="nombre" placeholder="Tu nombre" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
 
+      <select id="tipoPostre" onchange="cambiarTipoPostre()" required>
+        <option value="">¿Cómo querés pedir?</option>
+        <option value="menu">Elegir del menú</option>
+        <option value="personalizado">Postre personalizado</option>
+      </select>
+
+      <select id="postreMenu" style="display: none;">
+        <option value="">Elegí un postre</option>
+        <option value="Torta Chajá">Torta Chajá</option>
+        <option value="Rogel">Rogel</option>
+        <option value="Mousse de Chocolate">Mousse de Chocolate</option>
+        <option value="Tarta Frutal">Tarta Frutal</option>
+      </select>
+
+      <input type="text" id="postrePersonalizado" placeholder="Escribí tu postre personalizado" style="display: none;">
+
+      <!-- Vista previa del producto -->
+      <div id="previewProducto" class="preview"></div>
+
+      <!-- Selector de fecha y hora -->
+      <label for="fecha" class="etiqueta">¿Para qué fecha sería el postre?</label>
+      <input type="date" id="fecha" required>
+      
+      <label for="hora" class="etiqueta">¿Antes de qué hora te gustaría recibirlo?</label>
+      <input type="time" id="hora" required>
+      
+
+      <textarea id="detalle" placeholder="Detalles adicionales o dedicatoria..." rows="4"></textarea>
+      <button type="button" onclick="enviarPorWhatsapp()" class="btn">Enviar pedido</button>
+      <p id="estadoPedido" class="mensaje-enviado"></p>
     </form>
   </section>
+
+  <!-- Popup de confirmación -->
+  <div id="popupConfirmacion" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>🎉 ¡Pedido enviado con éxito!</p>
+      <button onclick="cerrarPopup()">Cerrar</button>
+    </div>
+  </div>
 
   <!-- Sección contacto + mapa -->
   <section id="contacto" class="contacto">
@@ -76,15 +111,60 @@
     </div>
   </section>
 
+<!-- Sección de Administración Avanzada -->
+<section id="admin" class="admin" style="display: none;">
+    <h2>📊 Panel de Administración</h2>
+  
+    <!-- Botones superiores -->
+    <div class="admin-controles">
+      <input type="text" id="buscadorPedidos" placeholder="Buscar por nombre o postre...">
+      <button id="exportarCSV">Exportar CSV</button>
+    </div>
+  
+    <!-- Gráfico -->
+    <canvas id="graficoPedidos" height="200"></canvas>
+  
+    <!-- Tabla -->
+    <div class="tabla-admin">
+      <table id="tablaPedidos">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Postre</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Se llena desde JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  
+  <!-- Clave de acceso al modo admin -->
+  <div id="loginAdmin" class="popup" style="display: none;">
+    <div class="popup-content">
+      <p>🔐 Ingresá la clave de administrador</p>
+      <input type="password" id="claveAdmin" placeholder="Clave">
+      <button onclick="verificarClaveAdmin()">Entrar</button>
+    </div>
+  </div>
+  
+
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 AliPasteleria - Hecho con amor en Uruguay</p>
     <p>WhatsApp: 098 923 768</p>
+    <button onclick="mostrarLoginAdmin()" class="btn-admin-oculto">Modo admin</button>
   </footer>
 
   <!-- Botón WhatsApp flotante -->
   <a href="https://wa.me/59898923768" class="whatsapp-float" target="_blank">💬</a>
   <script src="scripts.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>
