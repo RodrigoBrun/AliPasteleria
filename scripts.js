@@ -405,8 +405,13 @@ function cambiarTipoPostre() {
   // 📥 Cargar pedidos del Sheets
   function cargarPedidos() {
     fetch("https://script.google.com/macros/s/AKfycbzd-_V0Ipje39I3Hf_zDiFfo67ynkg-XZhUBWe95dQZJRaRSAKsSx1gLO9UX3LfeBGwXA/exec")
-      .then(res => res.json())
+      .then(res => {
+        console.log("🔄 Respuesta cruda del fetch:", res);
+        return res.json();
+      })
       .then(data => {
+        console.log("✅ Datos recibidos:", data);
+  
         const tabla = document.querySelector("#tablaPedidos tbody");
         const postres = {};
         tabla.innerHTML = "";
@@ -419,7 +424,7 @@ function cambiarTipoPostre() {
               <td>${p.Fecha}</td>
               <td>${p["Hora límite"] || p.Hora}</td>
               <td>${p.Detalles || p.Detalle}</td>
-              <td>${p["Fecha de envío"]}</td>
+              <td>${p["Fecha de envío"] || "-"}</td>
               <td><span class="estado">Pendiente</span></td>
               <td>
                 <button class="btnEntregado" onclick="marcarEntregado(this)">✅ Entregado</button>
@@ -429,6 +434,7 @@ function cambiarTipoPostre() {
           postres[p.Postre] = (postres[p.Postre] || 0) + 1;
         });
   
+        // Gráfico
         const ctx = document.getElementById("graficoPedidos").getContext("2d");
         new Chart(ctx, {
           type: "bar",
@@ -446,8 +452,12 @@ function cambiarTipoPostre() {
           }
         });
       })
-      .catch(err => console.error("❌ Error al cargar pedidos", err));
+      .catch(err => {
+        console.error("❌ Error al cargar pedidos", err);
+        alert("No se pudieron cargar los pedidos. Verificá la conexión o los permisos del script.");
+      });
   }
+  
   
   // ✅ Acciones de botones en la tabla
   function marcarEntregado(btn) {
