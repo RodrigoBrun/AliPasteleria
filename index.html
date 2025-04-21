@@ -16,6 +16,7 @@
   <nav class="navbar">
     <div class="logo">AliPasteleria</div>
     <ul>
+      <li><a href="#" onclick="toggleMenu()">Menú</a></li>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#productos">Productos</a></li>
       <li><a href="#pedido">Pedir</a></li>
@@ -38,26 +39,46 @@
 
   <!-- Sección de productos -->
   <section id="productos" class="productos">
-    <h2>Nuestras tortas</h2>
+    <h2>Nuestras tortas más pedidas</h2>
     <div class="galeria">
       <div class="producto">
         <img src="Imagenes/PostreChaja.png" alt="Torta Chajá">
         <h3>Torta Chajá</h3>
       </div>
       <div class="producto">
-        <img src="Imagenes/rogel.jpg" alt="Rogel">
+        <img src="Imagenes/roggel.jpg" alt="Rogel">
         <h3>Rogel</h3>
       </div>
       <div class="producto">
-        <img src="Imagenes/mousse-choco.png" alt="Torta de mousse de chocolate">
+        <img src="Imagenes/mousse-choco.jpg" alt="Torta de mousse de chocolate">
         <h3>Mousse de Chocolate</h3>
       </div>
       <div class="producto">
-        <img src="Imagenes/tarta-frutas.png" alt="Tarta frutal">
-        <h3>Tarta Frutal</h3>
+        <img src="Imagenes/oreo.jpg" alt="Tarta frutal">
+        <h3>Torta Oreo</h3>
       </div>
     </div>
   </section>
+
+
+  <section id="menuCompleto" style="display: none;" class="productos">
+    <h2>Menú completo de tortas</h2>
+    <div class="galeria">
+      <div class="producto"><img src="Imagenes/PostreChaja.png" alt="Torta Chajá"><h3>Torta Chajá</h3></div>
+      <div class="producto"><img src="Imagenes/roggel.jpg" alt="Rogel"><h3>Rogel</h3></div>
+      <div class="producto"><img src="Imagenes/mousse-choco.jpg" alt="Mousse de Chocolate"><h3>Mousse de Chocolate</h3></div>
+      <div class="producto"><img src="Imagenes/tarta-frutas.png" alt="Tarta Frutal"><h3>Tarta Frutal</h3></div>
+      <div class="producto"><img src="Imagenes/menta.jpg" alt="Torta Menta"><h3>Torta Menta</h3></div>
+      <div class="producto"><img src="Imagenes/oreo.jpg" alt="Torta Oreo"><h3>Torta Oreo</h3></div>
+      <div class="producto"><img src="Imagenes/clasica.jpg" alt="Torta clásica dulce y crema"><h3>Torta Clásica</h3></div>
+      <div class="producto"><img src="Imagenes/chaja-frutilla.jpg" alt="Chajá frutilla"><h3>Chajá Frutilla</h3></div>
+      <div class="producto"><img src="Imagenes/muffins.jpg" alt="Muffins"><h3>Muffins</h3></div>
+      <div class="producto"><img src="Imagenes/Torta-diseño-plantasZombies.jpg" alt="Torta con diseños"><h3>Torta con diseño</h3></div>
+      <div class="producto"><img src="Imagenes/tortas-clasica-50años.jpg" alt="Torta clasica 50 años"><h3>Torta clasica 50 años</h3></div>
+      <div class="producto"><img src="Imagenes/torta-roggel-hello40.jpg" alt="Roggel con diseño"><h3>Roggel con diseño</h3></div>
+    </div>
+  </section>
+
 
   <!-- Sección pedir tu postre -->
   <section id="pedido" class="pedido">
@@ -76,10 +97,20 @@
       <select id="postreMenu" style="display: none;">
         <option value="">Elegí un postre</option>
         <option value="Torta Chajá">Torta Chajá</option>
-        <option value="Rogel">Rogel</option>
+        <option value="Roggel">Roggel</option>
         <option value="Mousse de Chocolate">Mousse de Chocolate</option>
         <option value="Tarta Frutal">Tarta Frutal</option>
+        <option value="Torta Menta">Torta Menta</option>
+        <option value="Torta Oreo">Torta Oreo</option>
+        <option value="Torta Clásica Dulce y Crema">Torta Clásica Dulce y Crema</option>
+        <option value="Chajá Frutilla">Chajá Frutilla</option>
+        <option value="Muffins">Muffins</option>
+        <option value="Torta con diseño">Torta con diseño</option>
+        <option value="Torta clasica 50 años">Torta clasica con edad</option>
+        <option value="Roggel con diseño">Roggel con diseño</option>
       </select>
+      
+      
 
       <input type="text" id="postrePersonalizado" placeholder="Escribí tu postre personalizado" style="display: none;">
 
@@ -235,6 +266,10 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
+
+
+
+
 
 </body>
 </html>
