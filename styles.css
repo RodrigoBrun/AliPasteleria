@@ -614,5 +614,258 @@
   
   
   
+  .btn-borrar {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
   
+  .btn-borrar:hover {
+    background-color: #c0392b;
+  }
+  
+  .btn-borrar i {
+    margin-right: 6px;
+  }
+  
+  
+
+  .estado.verde {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  .estado.rojo {
+    color: #e74c3c;
+    font-weight: bold;
+  }
+  .estado.amarillo {
+    color: #f39c12;
+    font-weight: bold;
+  }
+  
+
+  .btnDescargaGrafico {
+    background-color: #b88f63;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+  .btnDescargaGrafico:hover {
+    background-color: #a4723a;
+    transform: scale(1.05);
+  }
+  
+
+
+  #contenedorGraficoPedidos {
+    max-width: 600px; /* Cambiá esto para más chico o más grande */
+    margin: 0 auto; /* Centrado */
+    padding: 1rem;
+    background-color: #fff7f0;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #graficoPedidos {
+    max-height: 300px; /* Altura reducida */
+  }
+  
+
+
+  .reporte-mensual {
+    padding: 1rem;
+    background: #fffaf4;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .reporte-resultado ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .btn {
+    background-color: #b88f63;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  
+  .btn:hover {
+    background-color: #a87542;
+  }
+  
+  .reporte-mensual button {
+    margin-left: 0.5rem;
+  }
+
+  .grupo-reporte {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Espacio entre input y botón */
+    flex-wrap: wrap; /* Por si no entra en pantallas chicas */
+    margin-top: 0.5rem;
+  }
+  
+
+
+  @media (max-width: 768px) {
+
+    .navbar {
+        padding: 1rem 1.2rem;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    
+      .navbar a {
+        font-size: 0.95rem;
+      }
+    
+      .navbar h1, .navbar .logo {
+        font-size: 1.2rem;
+      }
+
+    .hero {
+      height: auto;
+      padding: 5rem 1.5rem; /* más aire vertical */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+  
+    .hero h1 {
+      font-size: 2.4rem; /* más grande para destacar */
+      line-height: 1.3;
+    }
+  
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 90%;
+    }
+  
+    .hero .btn {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+    }
+  
+    /* mantenés el resto como ya lo tenés */
+    .productos {
+      padding: 2rem 1rem;
+    }
+  
+    .productos h2 {
+      font-size: 1.5rem;
+    }
+  
+    .galeria {
+      grid-template-columns: 1fr;
+    }
+  
+    .pedido {
+      padding: 2rem 1rem;
+    }
+  
+    .pedido h2 {
+      font-size: 1.5rem;
+    }
+  
+    .formulario-pedido {
+      width: 100%;
+      gap: 0.8rem;
+    }
+  
+    .contacto {
+      padding: 2rem 1rem;
+    }
+  
+    .contacto h2 {
+      font-size: 1.5rem;
+    }
+  
+    .popup-content {
+      width: 90%;
+      padding: 1.5rem;
+    }
+  
+    .admin {
+      padding: 2rem 1rem;
+    }
+  
+    .admin h2 {
+      font-size: 1.5rem;
+    }
+  
+    .admin-controles {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+  
+    .tabla-admin th,
+    .tabla-admin td {
+      font-size: 0.85rem;
+      padding: 0.5rem;
+    }
+  
+    footer {
+      padding: 1.5rem;
+      font-size: 0.8rem;
+    }
+  
+    .btn {
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+    }
+  
+    .mensaje-admin {
+      width: 90%;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .reporte-mensual {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+      }
+    
+      .reporte-mensual label {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+    
+      .reporte-mensual input[type="month"] {
+        margin-bottom: 0;
+      }
+    
+      .reporte-mensual button {
+        margin: 0;
+      }
+  }
   
