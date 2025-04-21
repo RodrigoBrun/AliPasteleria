@@ -116,6 +116,29 @@ function vistaPreviaPostre() {
   });
   
   
+  document.addEventListener("DOMContentLoaded", () => {
+    const secciones = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".navbar a");
+  
+    window.addEventListener("scroll", () => {
+      let scrollY = window.scrollY;
+  
+      secciones.forEach(seccion => {
+        const top = seccion.offsetTop - 100;
+        const height = seccion.offsetHeight;
+        const id = seccion.getAttribute("id");
+  
+        if (scrollY >= top && scrollY < top + height) {
+          links.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(id)) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    });
+  });
   
   
 
