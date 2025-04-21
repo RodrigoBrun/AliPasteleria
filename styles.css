@@ -83,7 +83,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #333;
+    color: #723047;
     background: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0.95)),
                 url("Imagenes/fondo-tortas2.jpg") center/cover no-repeat;
     min-height: 80vh;
@@ -95,9 +95,11 @@
   .hero h1 {
     font-size: 3rem;
     font-family: 'Playfair Display', serif;
-    color: #b88f63;
+    color: #ee5f91;
     animation: slideDown 1s ease forwards;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.55); /* ✅ Sombra sutil y elegante */
   }
+  
   
   .hero p {
     font-size: 1.3rem;
@@ -754,6 +756,37 @@
     border-radius: 10px;
   }
   
+
+  .btn-torta {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+  }
+  
+  .btn-torta img {
+    width: 100%;
+    border-radius: 0%;
+    transition: transform 0.3s;
+  }
+  
+  .btn-torta span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+    pointer-events: none;
+  }
+  
+  .btn-torta:hover img {
+    transform: scale(1.05);
+  }
+  
+
 
 
 
