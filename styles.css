@@ -76,15 +76,21 @@
      Hero (sección principal)
   ===================== */
   .hero {
-    background: linear-gradient(to bottom, #fdf7f2, #fff);
-    height: 80vh;
+    position: relative;
+    padding: 5rem 2rem;
+    text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 2rem;
+    color: #333;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0.95)),
+                url("Imagenes/fondo-tortas2.jpg") center/cover no-repeat;
+    min-height: 80vh;
     animation: fadeIn 1.5s ease;
+    z-index: 1;
   }
+  
   
   .hero h1 {
     font-size: 3rem;
