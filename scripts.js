@@ -9,22 +9,28 @@ const numeroWhatsApp = "59898923768";
 // ========================
 
 function cambiarTipoPostre() {
-  const tipo = document.getElementById("tipoPostre").value;
-  const menu = document.getElementById("postreMenu");
-  const personalizado = document.getElementById("postrePersonalizado");
-  menu.style.display = personalizado.style.display = "none";
-  menu.required = personalizado.required = false;
-
-  if (tipo === "menu") {
-    menu.style.display = "block";
-    menu.required = true;
-  } else if (tipo === "personalizado") {
-    personalizado.style.display = "block";
-    personalizado.required = true;
+    const tipo = document.getElementById("tipoPostre").value;
+    const menu = document.getElementById("postreMenu");
+    const personalizado = document.getElementById("postrePersonalizado");
+    const preview = document.getElementById("previewProducto");
+  
+    menu.style.display = personalizado.style.display = "none";
+    menu.required = personalizado.required = false;
+  
+    if (tipo === "menu") {
+      menu.style.display = "block";
+      menu.required = true;
+      preview.innerHTML = ""; // Limpia por si venía de personalizado
+    } else if (tipo === "personalizado") {
+      personalizado.style.display = "block";
+      personalizado.required = true;
+      preview.innerHTML = "";
+    }
   }
-
-  document.getElementById("previewProducto").innerHTML = "";
-}
+  
+  
+  
+  
 
 function enviarPorWhatsapp() {
   const nombre = document.getElementById("nombre").value.trim();
@@ -61,22 +67,57 @@ function cerrarPopup() {
 }
 
 function vistaPreviaPostre() {
-  const select = document.getElementById("postreMenu");
-  const preview = document.getElementById("previewProducto");
-  const imagenes = {
-    "Torta Chajá": "Imagenes/PostreChaja.png",
-    "Rogel": "Imagenes/rogel.jpg",
-    "Mousse de Chocolate": "Imagenes/mousse-choco.png",
-    "Tarta Frutal": "Imagenes/tarta-frutas.png"
-  };
+    const select = document.getElementById("postreMenu");
+    const preview = document.getElementById("previewProducto");
+    const imagenes = {
+      "Torta Chajá": "Imagenes/PostreChaja.png",
+      "Roggel": "Imagenes/roggel.jpg",
+      "Mousse de Chocolate": "Imagenes/mousse-choco.jpg",
+      "Tarta Frutal": "Imagenes/tarta-frutas.png",
+      "Torta Menta": "Imagenes/menta.jpg",
+      "Torta Oreo": "Imagenes/oreo.jpg",
+      "Torta Clásica Dulce y Crema": "Imagenes/clasica.jpg",
+      "Chajá Frutilla": "Imagenes/chaja-frutilla.jpg",
+      "Muffins": "Imagenes/muffins.jpg",
+      "Torta con diseño": "Imagenes/Torta-diseño-plantasZombies.jpg",
+      "Torta clasica 50 años": "Imagenes/tortas-clasica-50años.jpg",
+      "Roggel con diseño": "Imagenes/torta-roggel-hello40.jpg"
+    };
+    
+  
+    select.addEventListener("change", () => {
+      const valor = select.value;
+      const src = imagenes[valor] || "";
+      preview.innerHTML = src
+        ? `<img src="${src}" alt="${valor}">`
+        : "";
+      console.log("🖼️ Imagen seleccionada:", valor, src);
+    });
+  }
+  
 
-  select.addEventListener("change", () => {
-    const src = imagenes[select.value] || "";
-    preview.innerHTML = src ? `<img src="${src}" style="max-width:250px; border-radius:10px; margin-top:1rem">` : "";
+  function toggleMenu() {
+    const menu = document.getElementById("menuCompleto");
+    if (menu.style.display === "none") {
+      menu.style.display = "block";
+      window.scrollTo({ top: menu.offsetTop - 80, behavior: "smooth" });
+    } else {
+      menu.style.display = "none";
+    }
+  }
+  
+  document.querySelectorAll(".navbar a").forEach(link => {
+    link.addEventListener("click", () => {
+      const menuTortas = document.getElementById("menuTortas");
+      if (menuTortas && menuTortas.style.display === "block") {
+        menuTortas.style.display = "none";
+      }
+    });
   });
-
-  document.getElementById("fecha").setAttribute("min", new Date().toISOString().split("T")[0]);
-}
+  
+  
+  
+  
 
 // ========================
 // 🛠️ FIREBASE FUNCIONES
