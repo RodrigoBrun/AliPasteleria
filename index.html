@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AliPasteleri</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
   <!-- Navbar -->
@@ -127,8 +129,26 @@
     </div>
   
     <!-- Gráfico -->
-    <canvas id="graficoPedidos" height="200"></canvas>
+    <div id="contenedorGraficoPedidos">
+        <button id="descargarGrafico" class="btnDescargaGrafico">📥 Descargar gráfico</button>
+        <canvas id="graficoPedidos"></canvas>
+      </div>
   
+    <button onclick="borrarTodosLosPedidos()" class="btn-borrar"><i class="fas fa-trash"></i> Borrar todos los pedidos</button>
+<button onclick="borrarPedidosDeAbril()" class="btn-borrar"><i class="fas fa-calendar-times"></i> Borrar pedidos de abril 2025</button>
+
+<div class="reporte-mensual">
+    <label for="mesReporte">📅 Elegí el mes:</label>
+    <div class="grupo-reporte">
+      <input type="month" id="mesReporte">
+      <button onclick="generarReporteMensual()" class="btn">📊 Ver reporte</button>
+    </div>
+    <div id="resultadoReporte" class="reporte-resultado" style="margin-top: 2rem;"></div>
+    <button onclick="descargarGraficoMensual()" class="btnDescargaGrafico">🖼️ Descargar gráfico</button>
+  </div>
+  
+  
+
     <!-- Tabla -->
     <div class="tabla-admin">
       <table id="tablaPedidos">
@@ -185,6 +205,25 @@
   <div id="mensajeCierreAdmin" class="mensaje-admin" style="display: none;">
     🔒 Modo admin cerrado
   </div>
-  
+
+
+ <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBRVA6w0TnAG4I7gNN2MO07sqJoPMdmDr4",
+    authDomain: "ali-pasteleria.firebaseapp.com",
+    projectId: "ali-pasteleria",
+    storageBucket: "ali-pasteleria.appspot.com",
+    messagingSenderId: "1047386634110",
+    appId: "1:1047386634110:web:6f24aa098ccf04368ae52f",
+    measurementId: "G-M74LMYNH4R"
+  };
+
+  // Inicializa Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
 </body>
 </html>
