@@ -37,7 +37,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ee5f91;
+    color: #ee5f91; /* <-- Cambiá este color a lo que quieras */
   }
   
   .navbar ul {
