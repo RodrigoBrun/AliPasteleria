@@ -73,6 +73,8 @@
     color: #b88f63;
   }
   
+
+  
   /* =====================
      Hero (sección principal)
   ===================== */
@@ -792,25 +794,59 @@
 
 
   @media (max-width: 768px) {
-
     .navbar {
-        padding: 1rem 1.2rem;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    
-      .navbar a {
-        font-size: 0.95rem;
-      }
-    
-      .navbar h1, .navbar .logo {
-        font-size: 1.2rem;
-      }
-
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      padding: 1rem 1.2rem;
+    }
+  
+    .navbar .logo {
+      font-size: 1.2rem;
+    }
+  
+    .navbar-links-scroll {
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0.5rem 0;
+    }
+  
+    .navbar-links-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .navbar-links-scroll ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding-left: 1rem;
+    }
+  
+    .navbar-links-scroll li {
+      list-style: none;
+    }
+  
+    .navbar-links-scroll a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      white-space: nowrap;
+      padding: 0.5rem;
+      font-size: 0.95rem;
+    }
+  
+    .navbar-links-scroll a.active {
+      color: #b88f63;
+      font-weight: bold;
+      border-bottom: 2px solid #b88f63;
+    }
+  
     .hero {
       height: auto;
-      padding: 5rem 1.5rem; /* más aire vertical */
+      padding: 5rem 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -819,7 +855,7 @@
     }
   
     .hero h1 {
-      font-size: 2.4rem; /* más grande para destacar */
+      font-size: 2.4rem;
       line-height: 1.3;
     }
   
@@ -833,7 +869,6 @@
       font-size: 1rem;
     }
   
-    /* mantenés el resto como ya lo tenés */
     .productos {
       padding: 2rem 1rem;
     }
@@ -906,26 +941,27 @@
       text-align: center;
       font-size: 0.9rem;
     }
-
+  
     .reporte-mensual {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-      }
-    
-      .reporte-mensual label {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    
-      .reporte-mensual input[type="month"] {
-        margin-bottom: 0;
-      }
-    
-      .reporte-mensual button {
-        margin: 0;
-      }
+      flex-direction: row;
+      justify-content: center;
+      gap: 1rem;
+    }
+  
+    .reporte-mensual label {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  
+    .reporte-mensual input[type="month"] {
+      margin-bottom: 0;
+    }
+  
+    .reporte-mensual button {
+      margin: 0;
+    }
   }
+  
   
