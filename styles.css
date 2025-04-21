@@ -312,7 +312,7 @@
    Vista previa del producto seleccionado
 ===================== */
 .preview img {
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.5s ease-in-out;
   }
   
@@ -735,6 +735,26 @@
     margin-top: 0.5rem;
   }
   
+  /* Vista previa del producto seleccionado */
+#previewProducto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    min-height: 120px;
+    padding: 1rem;
+    background-color: #fff5ee;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  #previewProducto img {
+    max-width: 250px;
+    border-radius: 10px;
+  }
+  
+
 
 
   @media (max-width: 768px) {
